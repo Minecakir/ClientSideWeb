@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
+  <title>Responsive Product Landing Page</title>
+  <style>
+    /*Boxs for responsivity*/
+    .boxs {
+      width: 100%;
+      /* Center vertically and horizontally */
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    /*Two boxs -> One for product image other for product price and logistic description */
+    .boxs>.box {
+      grid-template-columns: repeat(2, 1fr);
+      /*Two Column for large screens*/
+      flex: 1;
+      padding: 10px;
+    }
+
+    hr {
+      height: 1px;
+      color: rgb(222, 222, 222);
+      background-color: rgb(222, 222, 222);
+      border-width: 0;
+    }
+
+    .offer p {
+      color: rgb(77, 185, 80);
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    @media screen and (max-width:992px) {
+      .boxs>.box {
+        grid-template-columns: repeat(2, 1fr);
+        /*One Column for small and medium screens*/
+        flex: 50%;
+      }
+
+      .offer,
+      .TWS {
+        display: none;
+      }
+
+      .product-button,
+      .installment {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
+
+      .btn-add-cart {
+        padding: 12px;
+      }
+
+      .btn-group {
+        position: relative;
+      }
+
+      .box2-table-wrapper {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin-bottom: 50px;
+      }
+
+      .box2-table {
+        width: 100%;
+      }
+    }
+
+    /*Center headphone image*/
+    .box>.box-image {
+      /* Center image vertically and horizontally */
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+
+    .box-image img {
+      /* Center image vertically and horizontally */
+      width: 90%;
+    }
+
+    p>.desc-header {
+      font-weight: 800;
+    }
+
+    /*Headphone spesifications*/
+    .box1-table th {
+      padding: 5px;
+      text-align: left;
+    }
+
+    .box1-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .box1-table .table-line{
+      border-top-style: solid;
+      border-width: 2px;
+      border-color: rgb(224, 218, 218);
+    }
+    
+    .boxs .box2 {
+      background-color: rgb(245, 245, 245);
+    }
+
+    .score {
+      font-size: 22px;
+      font-weight: 500;
+      color: rgb(70, 80, 88);
+    }
+
+    /*Product Rating -> 7469 Degerlendirme*/
+    .rating {
+      font-size: 15px;
+      font-weight: 700;
+      color: rgb(70, 80, 88);
+      display: flex;
+      justify-content: right;
+    }
+
+    .installment {
+      color: rgb(70, 80, 88);
+      font-size: 16px;
+      margin-top:0;
+    }
+
+    .bi-star-fill,
+    .bi-star-half,
+    .bi-star {
+      color: orange;
+      bottom: 13px;
+    }
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .icons {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 1;
+      gap: 3px;
+    }
+
+    .btn-loc {
+      background-color: rgb(255, 238, 229);
+      color: rgb(235, 125, 59);
+      font-weight: 600;
+      border-style: none;
+      border-radius: 25px;
+      padding: 10px;
+    }
+
+    .delivery {
+      font-size: 19px;
+      font-weight: 600;
+    }
+
+    .delivery-wrapper,
+    .supplier-wrapper {
+      background-color: white;
+      padding: 10px;
+      border-radius: 10px;
+      padding-bottom: 10px;
+    }
+
+    .delivery-wrapper .wrapper {
+      padding: 5px;
+    }
+
+    .thick {
+      font-weight: bold;
+    }
+
+    .price {
+      font-weight: 800;
+      font-size: 35px;
+      color: rgb(69, 75, 75);
+    }
+
+    .product-header {
+      color: rgb(70, 80, 88);
+    }
+
+    .TWS {
+      font-weight: bolder;
+      font-size: 23px;
+    }
+
+    .price-box p,
+    .wrapper p {
+      padding: 2px;
+      margin: 0;
+    }
+
+    table {
+      font-size: 15px;
+    }
+
+    .box2-table {
+      background-color: white;
+      width: 80%;
+      font-weight: 600;
+    }
+
+    .box2-table,
+    .box2-table td {
+      border-collapse: collapse;
+      border-style: solid;
+      border-width: 0.5px;
+      text-align: center;
+      color: rgb(170, 169, 162);
+      border-color: rgb(191, 191, 191);
+      ;
+    }
+
+    .offer-text {
+      color: rgb(70, 80, 88);
+    }
+
+    .btn-add-cart {
+      background-color: rgb(255, 97, 0);
+      color: white;
+      border-style: none;
+      border-radius: 5px;
+      font-weight: bold;
+      width: 150px;
+      margin-left: 14px;
+      font-size: 15px;
+      padding: 14px;
+    }
+
+    .product-button {
+      display: flex;
+    }
+
+    .product-button>div>button {
+      border: none;
+      padding: 16px;
+    }
+
+    .btn-num,
+    .btn-add {
+      margin-left: -6px;
+    }
+
+    .btn-num {
+      background-color: white;
+      border: none;
+    }
+
+    .btn-subtr,
+    .btn-add {
+      background-color: rgb(191, 191, 191);
+      font-weight: 600;
+    }
+
+    .btn-subtr {
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+
+    .btn-add {
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .num {
+      left: 44px;
+      bottom: 5px;
+      position: absolute;
+      font-size: 11px;
+      color: grey;
+    }
+
+    .product-button {
+      position: relative;
+      margin-top: 15px;
+    }
+
+    .change-box {
+      padding: 22px;
+      border-radius: 8px;
+      font-size: 16px;
+      background-color: rgb(240, 234, 254);
+      border-color: rgb(221, 210, 242);
+      border-width: 2px;
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .change-box-button {
+      display: inline-flex;
+      flex: 1;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+
+    .change-box-button button {
+      padding: 7px;
+      border-style: none;
+      background-color: aliceblue;
+      font-weight: 600;
+    }
+
+    .question-btn {
+      border-radius: 100px;
+      width: 27px;
+      height: 27px;
+      border-style: none;
+      font-weight: 600;
+    }
+
+    .btn-offer {
+      border-radius: 100px;
+      width: 22px;
+      height: 22px;
+      border-style: none;
+      font-weight: 600;
+      background-color: rgb(255, 97, 0);
+      color: white;
+
+    }
+
+    .faydalan-btn {
+      border-radius: 5px;
+    }
+
+    .fav {
+      color: rgb(70, 80, 88);
+      font-weight: 400;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .suppliers,
+    .suppliers-price {
+      color: rgb(70, 80, 88);
+      font-weight: 700;
+      font-size: 21px;
+      padding: 20px;
+    }
+
+    .all-supp {
+      color: rgb(255, 97, 0);
+    }
+
+    .supplier-wrapper .wrapper {
+      gap: 15px;
+    }
+
+    .btn-point {
+      color: white;
+      background-color: rgb(77, 185, 80);
+      border-style: none;
+      border-radius: 3px;
+    }
+
+    .color-blue {
+      color: cornflowerblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="boxs">
+    <!--Start Of Box1-->
+    <div class='box box1'>
+      <!--Headphone image box-->
+      <div class='box-image'>
+        <img src='P2-img/kulaklik.jfif' alt="headphone"></img>
+      </div>
+      <!----------------------->
+      <!--Headphone image description box with table-->
+      <div class='image-desc'>
+        <table class="box1-table">
+          <tr>
+            <th class="table-line">Cift Telefon Destegi</th>
+            <td>Yok</td>
+            <th class="table-line">Bluetooth Versiyon</th>
+            <td>5.0</td>
+          </tr>
+          <tr>
+            <th>Suya & Tere Dayanikli</th>
+            <td>Hayir</td>
+            <th>Aktif Gurultu Onleme<br>(ANC)</br></th>
+            <td>Yok</td>
+          </tr>
+          <tr>
+            <th>Kullanim Tipi</th>
+            <td>Kulakici</td>
+          </tr>
+        </table>
+      </div>
+      <!----------------------------------------------->
+      <!--End Of Box1-->
+    </div>
+
+    <!--Start Of Box2-->
+    <div class='box box2'>
+      <div class='price-box'>
+        <p class="product-header TWS">TWS i12 Bluetooth 5.0 kulaklik - Sarj Uniteli</p>
+        <p class='TWS color-blue'><b>TWS</b></p>
+        <div class="wrapper stars">
+          <div class="box-left price">115,00 TL</div>
+          <div class="icons">
+            <span class='score'>3,5</span>
+            <span class="star bi bi-star-fill star-1"></span>
+            <span class="star bi bi-star-fill star-2"></span>
+            <span class="star bi bi-star-fill star-3"></span>
+            <span class="star bi bi-star-half star-4"></span>
+            <span class="star bi bi-star star-5"></span>
+          </div>
+        </div>
+        <span class="rating">7469 Değerlendirme</span>
+      </div>
+
+      <div>
+        <p class="installment">19 TL x 6 aya varan <b>Taksitle</b></p>
+      </div>
+
+      <div class="box2-table-wrapper">
+        <table class="box2-table">
+          <tr>
+            <td>Satici: <span class='color-blue'>SFIT TEKNOLOJI...</span></td>
+            <td>Puan
+              <button type="button" class="btn-point">9,4</button>
+              <button type="button" class="question-btn">?</button>
+            </td>
+            <td><span class='offer-text'>Kampanyalari Gör</span>
+              <button type="button" class="btn-offer">3</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="offer">
+        <p>Seçili Telefon Alana TWS i12 Bluetooth 5.0 Kulaklık %10 İndirimli! </p>
+      </div>
+
+      <hr>
+
+      <div class="product-button">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn-subtr">-</button>
+          <button type="button" class="btn-num">1<span class='num'>Adet</span></button>
+          <button type="button" class="btn-add">+</button>
+        </div>
+        <button type="button" class="btn-add-cart"><span class="bi bi-cart3"></span> Sepete Ekle</button>
+      </div>
+
+      <!--Change Box -> Eski ürününü yenisi ile değiştirmek ister misin? -->
+      <div class="change-box">
+        Eski ürününü yenisi ile değiştirmek ister misin?
+        <div class="change-box-button">
+          <button class="question-btn">?</button>
+          <button class="faydalan-btn">Faydalan</button>
+        </div>
+      </div>
+      <!--Icons for fav - like and save-->
+      <div class="icons fav">
+        <span class="bi bi-suit-heart">Beğen</span>
+        <span class="bi bi-bookmark">Listeme Ekle</span>
+        <span class="bi bi-arrow-left-right">Karşılaştır</span>
+      </div>
+      <hr>
+
+      <!--Delivery Section-->
+      <div class="delivery-wrapper">
+        <!--Delivery Section Box1-->
+        <div class="wrapper">
+          <div class="box-left delivery">Teslimat Seçenekleri</div>
+          <!--Icons for location-->
+          <div class="icons">
+            <button class="btn-loc"><span class="bi bi-geo-alt"></span>Konum Seç</button>
+          </div>
+        </div>
+        <!--End Of Delivery Section Box1-->
+        <!--Delivery Section Box2-->
+        <div class="wrapper">
+          <div class="box-left"><b>Standart Teslimat</b><br>En geç <b> 14 Ekim Cuma</b> günü kargoda</div>
+          <div class="icons">
+            <img src="P2-img/hepsijet.jpg" alt="hepsiJet"></img>
+          </div>
+        </div>
+        <!--End Of Delivery Section Box2-->
+      </div>
+      <!--End Of Delivery Section-->
+
+      <div class="wrapper">
+        <div class="box-left suppliers">Diğer Satıcılar - <span class='all-supp'>Tümü(2)</span></div>
+        <!--Icons for location-->
+        <div class="icons">
+          <button type="button" class="question-btn">?</button>
+        </div>
+      </div>
+
+      <div class="supplier-wrapper">
+        <div class="wrapper">
+          <button type="button" class="btn-point">9,7</button>
+          <p class="color-blue">Torima</p>
+        </div>
+        <div class="wrapper">
+          <span class="suppliers-logistic"><b>21 saat 42 dakika</b> içinde sipariş verirsen yarın kargoda</span>
+          <span class="suppliers-price">148,97</span>
+          <button type="button" class="btn-add-cart">Sepete Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</body>
+
+</html>

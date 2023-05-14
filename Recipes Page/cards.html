@@ -1,0 +1,166 @@
+<!----------------- Responsive Recipe Cards Project Made By Mine Cakir ----------------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Cards</title>
+    <style>
+        html,body
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+        
+        body .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #d8e2dc;
+            width: 75%;
+            min-height: 1000px;
+            height:auto;
+        }
+
+        body .container .card {
+            /*You must make the card’s position relative for button and icon*/
+            position: relative;
+            /* card must occupy width %45 of its parent container */
+            width:45%;
+            min-width: 320px;
+            height: 290px;
+            border-radius: 5%;
+            margin: 10px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 5px 5px 5px grey;
+        }
+
+        .card img{
+            /* The image on the card occupies 100% width */
+            width: 100%;
+            /* The image on the card fixed height of 230px */
+            height: 230px;
+            border-top-left-radius: 5%;
+            border-top-right-radius: 5%;
+        }
+
+        body .container .card footer h4{
+            padding:5px;
+            padding-left:20px;
+            margin:0;
+        }
+
+        body .container .card footer p {
+            margin:0;
+            padding-left:20px;
+            font-size:small;
+            font-weight: 300;
+            color:grey;
+        }
+
+        /*When the mouse is on top of this button*/
+        body .container .card footer button:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+        /*the background must become green*/
+        background-color: green;
+        /*the text color white*/
+        color: white;
+        border-color: green;
+        /*cursor must turn to pointer*/
+        cursor: pointer;
+        }
+
+        footer button{
+            position: absolute;
+            bottom: 12px;
+            right: 15px;
+            color:#7f7dff;
+            border-color: #7f7dff;
+            background-color: #f0f1ff;
+            outline: none;
+            display: flex;
+            align-items: center;
+            padding: 10px 10px;
+            cursor: pointer;
+            font-size: small;
+            border-radius: 10px;
+        }
+
+        header{
+            width: 75%;
+            background-color: #d8e2dc;
+        }
+
+        header h1{
+            text-align: center;
+            position: center;
+            font-size: 50px;
+        }
+
+        .material-icons{
+            position: absolute;
+            margin-top:3px;
+            background-color: #d8e2dc;
+            width: 90px;
+            border-radius: 50vh;
+            padding:5px;
+            left:15px;
+            right:15px;
+        }
+
+        .icon-text{
+            position: absolute;
+            padding:5px;
+            left:30px;
+            top:8px;
+            font-weight: 100px;
+            color:black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Recipes</h1>
+    </header>
+        <div class="container">
+            <div class="card">
+                <footer>
+                    <!-- We have a footer section that contains the name of the recipe
+                    and the name of the person who made the recipe -->
+                    <img src="./stew.jpg" alt="Chili Stew">
+                    <i class="material-icons">access_time</i>
+                    <p class="icon-text">25 MINS</p>
+                    <h4>5 Bean Chili Stew</h4>
+                    <p>Recipe by Mehmet</p>
+                    <button>Details</button>
+                </footer>
+            </div>
+
+            <div class="card">
+                <footer>
+                    <img src="./curry.jpg" alt="Tofu Curry">
+                    <i class="material-icons">access_time</i>
+                    <p class="icon-text">40 MINS</p>
+                    <h4>Tofu Curry</h4>
+                    <p>Recipe by Ayse</p>
+                    <button>Details</button>
+                </footer>
+            </div>
+            
+        </div>
+</body>
+</html>

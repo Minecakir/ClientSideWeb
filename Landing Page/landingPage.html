@@ -1,0 +1,432 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
+
+    <title>Responsive Landing Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: rgba(217, 238, 225, .3);
+            margin: 0;
+        }
+
+        .main-section {
+            background: linear-gradient(rgb(40, 42, 53, 0.90), rgb(40, 42, 53,
+                        0.90)), url('P1-img/bg-img.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            height: 630px;
+            /* Center vertically and horizontally */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-section header {
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 40px;
+        }
+
+        header .head-2 {
+            font-size: 25;
+        }
+
+        header .head-3 {
+            font-size: 15;
+        }
+
+        /*Leader Section Button Styles*/
+        .main-section button {
+            background-color: #04AA6D;
+            border: 2px solid #04AA6D;
+            color: white;
+            border-radius: 17px;
+            padding: 10px;
+            width: 200px;
+            margin: 20px;
+        }
+
+        .boxs {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            padding: 50px 0;
+        }
+
+        @media (min-width:992px) {
+            .boxs {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width:768px) {
+            .boxs {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        .boxs .box {
+            /* Center vertically and horizontally */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box-headers {
+            text-align: center;
+        }
+
+        .box-headers h2 {
+            color: #04AA6D;
+        }
+
+        .how-it-works-large-screen {
+            /* Center vertically and horizontally */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(40, 42, 54);
+            color: white;
+        }
+
+        .how-it-works-large-screen h1 {
+            text-align: center;
+        }
+
+        .how-it-works-col {
+            padding: 20px;
+        }
+
+        .how-it-works-images {
+            padding: 30px;
+        }
+
+        .how-it-works-images img {
+            padding: 10px;
+        }
+
+        .how-it-works-desc .steps {
+            display: flex;
+        }
+
+        .steps .step {
+            padding: 30px;
+        }
+
+        .how-it-works-small,
+        .how-it-works-small-screen h1 {
+            display: none;
+        }
+
+        @media screen and (max-width:992px) and (min-width:768px) {
+            .how-it-works-small {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width:768px) {
+            .how-it-works-small {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .how-it-works-large-screen {
+                display: none;
+            }
+
+            .how-it-works-small-screen {
+                background-color: rgb(40, 42, 54);
+                color: white;
+            }
+
+            .how-it-works-small {
+                display: grid;
+                padding: 30px 0;
+            }
+
+            .how-it-works-small-screen h1 {
+                display: flex;
+                justify-content: center;
+                padding-top: 40px;
+            }
+
+            .how-it-works-small-screen .image-box {
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .image-box .step {
+                padding: 10px;
+            }
+        }
+
+        .cards {
+            grid-template-columns: repeat(4, 1fr);
+            display: grid;
+        }
+
+        @media screen and (max-width:768px) {
+            .cards {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        @media screen and (min-width:768px) and (max-width:992px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .cards .card {
+            /* Center vertically and horizontally */
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 7px;
+
+        }
+
+        .card-headers {
+            text-align: left;
+        }
+
+        .card-headers .price {
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .card-headers .card-desc {
+            font-weight: bolder;
+        }
+
+        .bi-check {
+            color: rgb(0, 128, 55);
+            border: 0px solid;
+            border-radius: 50%;
+            padding: 1px;
+            background-color: rgb(217, 242, 221);
+        }
+
+        .card-headers>div {
+            padding: 2px;
+        }
+
+        .footer-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color:grey;
+            font-size:15px;
+        }
+
+        .content2{
+            font-size:12px;
+            margin-top:-15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-section">
+        <header>
+            <h1>Create a Free Website</h1>
+            <p class="head-2">Everything you need right in the browser.</p>
+            <p class="head-3">Build your own website. It is easy to use - try it!</p>
+            <button>Get started for free</button>
+        </header>
+    </div>
+
+    <div class="boxs">
+
+        <div class="box">
+            <div class="box-headers">
+                <h2>Website</h2>
+                <p>Create your own website and share it with others</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-headers">
+                <h2>Code Editor</h2>
+                <p>Code directly in your browser</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-headers">
+                <h2>File Manager</h2>
+                <p>Start with ready-to-use designs and structures</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-headers">
+                <h2>Playground</h2>
+                <p>Upload and handle files in your browser</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-headers">
+                <h2>Website</h2>
+                <p>Learn, test, and go live with your space</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-headers">
+                <h2>Website</h2>
+                <p>Playground for HTML, CSS and JavaScript</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="how-it-works-large-screen">
+        <div class="how-it-works-col">
+            <h1>How it works</h1>
+            <div class="how-it-works-images">
+                <img src="P1-img/img1.svg" class="image" alt="Join and create a space">
+                <img class="line" src="P1-img/img2.svg" alt="line1">
+                <img src="P1-img/img3.svg" class="image" alt="Choose a template - or start from scratch">
+                <img class="line" src="P1-img/img4.svg" alt="line2">
+                <img src="P1-img/img5.svg" class="image" alt="Edit your code and make it yours">
+                <img class="line" src="P1-img/img2.svg" alt="line1">
+                <img src="P1-img/img6.svg" class="image" alt="Share your space with someone">
+            </div>
+            <div class="how-it-works-desc">
+                <div class="steps">
+                    <div class="step">1. Join and create a space</div>
+                    <div class="step">2. Choose a template - or start <br> from scratch</div>
+                    <div class="step">3. Edit code directly in your <br> browser</div>
+                    <div class="step">4. Share your website with the<br> world</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="how-it-works-small-screen">
+        <h1>How it works</h1>
+        <div class="how-it-works-small">
+            <div class="image-box">
+                <img src="P1-img/img1.svg" class="image" alt="Join and create a space"><br>
+                <div class="step">1. Join and create a space</div><br>
+            </div>
+
+            <div class="image-box">
+                <img src="P1-img/img3.svg" class="image" alt="Choose a template - or start from scratch"><br>
+                <div class="step">2. Choose a template - or start from scratch</div><br>
+            </div>
+
+            <div class="image-box">
+                <img src="P1-img/img5.svg" class="image" alt="Edit your code and make it yours"><br>
+                <div class="step">3. Edit code directly in your browser</div><br>
+            </div>
+
+            <div class="image-box">
+                <img src="P1-img/img6.svg" class="image" alt="Share your space with someone"><br>
+                <div class="step">4. Share your website with the world</div><br>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-headers">
+                <p><span class="price">$0.00/</span>month</p>
+                <h2>Free</h2>
+                <p class="card-desc">For new web developers ready to create their first site.</p>
+                <div><span id="boot-icon" class="bi-check"></span>Browse with ads</div>
+                <div><span id="boot-icon" class="bi-check"></span>Build static sites</div>
+                <div><span id="boot-icon" class="bi-check"></span>1 space</div>
+                <div><span id="boot-icon" class="bi-check"></span>100 MB storage</div>
+                <div><span id="boot-icon" class="bi-check"></span>75 MB data/month</div>
+                <div><span id="boot-icon" class="bi-check"></span>500 requests/month</div>
+                <div><span id="boot-icon" class="bi-check"></span>myhost.com subdomain</div>
+                <div><span id="boot-icon" class="bi-check"></span>SSL certificate</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-headers">
+                <p><span class="price">$4.99/</span>month</p>
+                <h2>Basic</h2>
+                <p class="card-desc">For those running one space with more traffic.</p>
+                <div><span id="boot-icon" class="bi-check"></span>Browse without ads</div>
+                <div><span id="boot-icon" class="bi-check"></span>Build static sites</div>
+                <div><span id="boot-icon" class="bi-check"></span>1 space</div>
+                <div><span id="boot-icon" class="bi-check"></span>1 GB storage</div>
+                <div><span id="boot-icon" class="bi-check"></span>10 GB data/month</div>
+                <div><span id="boot-icon" class="bi-check"></span>10 000 requests/month</div>
+                <div><span id="boot-icon" class="bi-check"></span>myhost.com subdomain</div>
+                <div><span id="boot-icon" class="bi-check"></span>SSL certificate</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-headers">
+                <p><span class="price">$8.99/</span>month</p>
+                <h2>Pro</h2>
+                <p class="card-desc">For those running multiple spaces with more traffic.</p>
+                <div><span id="boot-icon" class="bi-check"></span>Browse without ads</div>
+                <div><span id="boot-icon" class="bi-check"></span>Build static sites</div>
+                <div><span id="boot-icon" class="bi-check"></span>10 spaces</div>
+                <div><span id="boot-icon" class="bi-check"></span>10 GB storage</div>
+                <div><span id="boot-icon" class="bi-check"></span>100 GB data/month</div>
+                <div><span id="boot-icon" class="bi-check"></span>100 000 requests/month</div>
+                <div><span id="boot-icon" class="bi-check"></span>myhost.com subdomain</div>
+                <div><span id="boot-icon" class="bi-check"></span>SSL certificate</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-headers">
+                <p><span class="price">$12.99/</span>month</p>
+                <h2>Premium</h2>
+                <p class="card-desc">Build more sites and grow your online presence.</p>
+                <div><span id="boot-icon" class="bi-check"></span>Browse without ads</div>
+                <div><span id="boot-icon" class="bi-check"></span>Build static sites</div>
+                <div><span id="boot-icon" class="bi-check"></span>50 spaces</div>
+                <div><span id="boot-icon" class="bi-check"></span>50 GB storage</div>
+                <div><span id="boot-icon" class="bi-check"></span>500 GB data/month</div>
+                <div><span id="boot-icon" class="bi-check"></span>500 000 requests/month</div>
+                <div><span id="boot-icon" class="bi-check"></span>myhost.com subdomain</div>
+                <div><span id="boot-icon" class="bi-check"></span>SSL certificate</div>
+            </div>
+        </div>
+    </div>
+    <!--Footer Section-->
+    <footer>
+        <div class="footer-content content1">
+            <p>2000-2022 My Hosting. All rights reserved. Cookie policy. Privacy and Terms</p><br>
+        </div>
+        <div class="footer-content content2">
+            <p>Reporting abusive contents help us keep Spaces safe. Help us by Reporting Abuse if you find any.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
