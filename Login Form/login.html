@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form </title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;	
+        }
+
+        /*The login page must be inside a container 
+        with a width of 400px centered in the middle of the screen*/
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 400px;
+        }
+
+        .screen {		
+            background-color: rgba(169, 164, 174, 0.522);
+            position: relative;	
+            width: 400px;	
+            box-shadow: 5px 5px 10px #8d99ae;
+        }
+
+        input{
+            border-style: none;
+        }
+        
+        .login {
+            width: 100%;
+            padding: 30px;
+        }
+
+        .input__field {
+            padding: 20px 0px;	
+            position: relative;	
+            width: 100%;
+        }
+
+        .login__input {
+            border:none;
+            border-bottom: 2px solid #D1D1D4;
+            /*input fields must extend the full width of the container (100%)*/
+            width: 100%;
+            padding: 10px;
+            padding-left: 24px;
+            font-weight: 700;
+            border-radius: 5px;
+        }
+
+        .login__input:active,
+        .login__input:focus,
+        .login__input:hover {
+            outline: none;
+            border-bottom-color: #4C489D;
+            color:#4C489D;
+        }
+
+        .submit {
+            background: #90a955;
+            font-size: 14px;
+            margin-top: 30px;
+            padding: 16px 20px;
+            border-radius: 10px;
+            border: 1px solid #D4D3E8;
+            text-transform: uppercase;
+            font-weight: 700;
+            /*submit button must extend the full width of the container (100%)*/
+            width: 100%;
+            color: #4C489D;
+            box-shadow: 0px 2px 2px #8e9aaf;
+            cursor: pointer;
+            transition: .2s;
+            text-align: center;
+            align-items: center;
+        }
+
+        /*cursor turns to “pointer”, the background color turns to “green”
+         and the text color turns to “white”*/
+        .submit:active,
+        .submit:focus,
+        .submit:hover {
+            border-color: #6A679E;
+            background-color: green;
+            color:white;
+            cursor: pointer;
+        }
+
+        /*circular buttons with titles “G”, “f”, “in”*/
+        .social__media{	
+            padding:10px;
+            text-align: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .social__media button{
+            /*Each of these buttons is 40x40 pixels*/
+            width:40px;
+            height:40px;
+            border-radius: 40px;
+            padding:10px;
+            margin:10px;
+        }
+
+        form header h1{
+            text-align: center;
+            margin-top: 0 auto;
+        }
+
+        .google__button{
+            border-color: red;
+            color:red;
+        }
+
+        .facebook__button, .linkedin__button{
+            border-color: rgb(47, 234, 255);
+            color:rgb(47, 234, 255);
+        }
+
+        /*cursor turns to “pointer”, the background color turns to “green”
+         and the text color turns to “white”*/
+        .social__media button:active,
+        .social__media button:focus,
+        .social__media button:hover {
+            border-color: white;
+            background-color: green;
+            color:white;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="screen">
+                <form class="login">
+
+                    <!--Form Header-->
+                    <header>
+                        <h1>LOGIN</h1>
+                    </header>
+
+                    <!--Social Media Buttons-->
+                    <div class="social__media">
+                        <button class="google__button">G</button>
+                        <button class="facebook__button">f</button>
+                        <button class="linkedin__button">in</button>
+                    </div>
+
+                    <!--Input Field Area for email-->
+                    <div class="input__field">
+                        <input type="email" class="login__input" placeholder="Your email" required>
+                    </div>
+
+                    <!--Input Field Area for password-->
+                    <div class="input__field">
+                        <input type="password" class="login__input" placeholder="Password" required>
+                    </div>
+
+                    <!--Submit Button-->
+                    <button class="submit">Submit</button>	
+                </form>
+        </div>
+    </div>
+</body>
+</html>
