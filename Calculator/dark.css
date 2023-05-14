@@ -1,0 +1,40 @@
+
+body{
+    background: url("night.png"); /* Goruntu biraz guzellessin diye isterlerden farkli olarak backg img ekledim 🥰*/
+    background-color: black;
+}
+
+.calc, .btn-icon{
+    background-color: rgb(56, 55, 55);
+}
+
+.button{
+    background: lightgrey;
+    color: white;
+}
+
+.display{
+    background-color: darkcyan;
+    color: rgba(255,255,255,0.8);
+    border: solid 3px  rgba(255,255,255,0.8);
+}
+
+.display-operations{
+    color: rgba(255,255,255,0.8);
+}
+
+.eq{
+    background: darkcyan;
+}
+
+.sun{
+    display: none;
+}
+
+.bi{
+    color:white;
+}
+
+.header, .title{
+    color: rgba(255,255,255,0.8);
+}

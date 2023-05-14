@@ -1,0 +1,39 @@
+
+body{
+    background: url("sun.png"); /* Goruntu biraz guzellessin diye isterlerden farkli olarak backg img ekledim 🥰*/
+    background-color: lightyellow;
+    background-position-y: 12%;
+    background-position-x: 62%;
+    background-repeat: no-repeat;
+}
+
+.calc{
+    background: rgba(255,255,255,0.8);
+}
+
+.button{
+    background: lightgrey;
+    color: rgba(0,0,0,0.6);
+}
+
+.display{
+    background-color: lightblue;
+    color: rgba(0,0,0,.6);
+    border: solid 3px rgba(0,0,0,.6);
+}
+
+.display-operations{
+    color: rgba(0,0,0,0.45);
+}
+
+.eq{
+    background: lightblue;
+}
+
+.moon{
+    display: none;
+}
+
+.header, .titler{
+    color: rgba(0,0,0,0.45);
+}

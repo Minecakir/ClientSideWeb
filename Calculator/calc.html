@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="common.css"/>
+    <link rel="stylesheet" href="light.css" id="theme-css"/>
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <div class="calc">
+        <div class="header">
+            <!-- Contains the title “Calculator” on the left and two icons on the right -->
+            <div class="titles">
+                Calculator
+            </div>
+            <!-- ICONS -->
+            <div class="icons">
+                <div class="icon arrow">
+                    <button class="btn-icon">
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+                </div>
+                <div class="icon moon">
+                    <i class="bi bi-moon-fill"></i>
+                </div>
+                <div class="icon sun">
+                    <i class="bi bi-brightness-high-fill"></i>
+                </div>
+            </div>
+        </div>
+        <!-- DISPLAY OPERATIONS -->
+        <div class="display">
+            <div class="display-operations">
+                0
+            </div>
+            <div class="display-main">
+                0
+            </div>
+        </div>
+        <!-- GRID CONTAINER -->
+        <div class="grid-buttons-container">
+            <!-- The calculator itself is a grid container -->
+            <button class="button num seven">7</button>
+            <button class="button num eight">8</button>
+            <button class="button num nine">9</button>
+            <button class="button op div">/</button>
+            <button class="button num four">4</button>
+            <button class="button num five">5</button>
+            <button class="button num six">6</button>
+            <button class="button op mult">*</button>
+            <button class="button num one">1</button>
+            <button class="button num two">2</button>
+            <button class="button num three">3</button>
+            <button class="button op minus">-</button>
+            <button class="button num zero">0</button>
+            <button class="button c">C</button>
+            <button class="button eq">=</button>
+            <button class="button op plus">+</button>
+        </div>
+    </div>
+</div>
+<script src="calc.js"></script>
+</body>
+</html>
