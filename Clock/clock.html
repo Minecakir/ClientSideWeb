@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;	
+        }
+
+        body{
+            background: url('P1-img/levander.jpg');
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center; /* Center the image */
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /*The clock page must be inside a container 
+         centered in the middle of the screen*/
+         .container {
+            display: flex;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        /* All boxes are in this clock-box*/
+         .clock-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        /* All div boxes are center of the container and text color is white*/
+        .clock > div , .clock-text > div,  #pm-am{
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            color:white;
+            display: flex;
+            width: 100px;
+        }
+
+        .clock > div{
+            background-color: transparent;
+            /* The width and height of the containers displaying 
+            the hours, minutes and seconds is 100px 100px */
+            height: 100px;
+            background: linear-gradient(rgba(87, 89, 118, 0.6), rgba(127, 8, 218, 0.6));
+            font-size: 50px;
+            font-weight: 700;
+        }
+
+        .clock, .clock-text{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px; /* The gap between different boxes is 15px*/
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .clock-text > div{
+            background: linear-gradient(rgb(0, 0, 200, 0.5), rgb(0, 0, 200, 0.5));
+            height: 40px;
+            font-size: 17px;
+        }
+
+        #pm-am{
+            /*The height of the blue/green boxes seen at the bottom is 40px.*/
+            bottom:40px;
+            /* Mavi kutular da bottom: 40 ancak onlari position relative ile yapmadim
+             Yesil kutuyu pm-am i bottom:40 yaparak diger kutularla
+             ayni hizada oldugunu gosterdim, yani diger kutular da bottom:40 seviyesinde.🥰
+            */
+            left:215px;
+            position:relative;
+            background: linear-gradient(rgba(34, 221, 37, 0.6), rgba(34, 221, 37, 0.6));
+            width: 60px;
+            height: 40px;
+        }
+
+        h1{
+            color:white;
+            font-size: 37px;
+            padding:20px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="clock-box">
+            <h1>DIGITAL CLOCK</h1>
+            <!-- the text “DIGITAL CLOCK” is centered on top of the digits, not on top of all boxes -->
+            <div class="clock">
+                <div id="hour">00</div>
+                <div id="minute">00</div>
+                <div id="seconds">00</div>
+            </div>
+            <div class="clock-text">
+                <div class="info">HOURS</div>
+                <div class="info">MINUTES</div>
+                <div class="info">SECONDS</div>
+            </div>
+            <div id="pm-am">PM</div>
+        </div>
+    </div>
+    <script>
+        function displayTime(){
+            var d = new Date();
+            var hour = d.getHours();
+            var minutes = d.getMinutes();
+            var seconds = d.getSeconds();
+            var amOrPm = "AM";
+            if(hour>=12){
+                amOrPm = "PM";
+            }
+            if(hour > 12)
+            {
+                hour = hour-12;
+            }
+            if(hour<10){hour = "0" + hour;}
+            if(seconds<10){seconds = "0" + seconds;}
+            if(minutes<10){minutes = "0" + minutes;}
+
+            document.getElementById("hour").innerHTML = hour;
+            document.getElementById("minute").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+            document.getElementById("pm-am").innerHTML = amOrPm;
+        }
+        setInterval(displayTime, 1000);
+    </script>
+</body>
+</html>
