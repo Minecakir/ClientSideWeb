@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs</title>
+    <style>
+      *{
+          padding:0;  
+          margin:0;
+        }
+  
+      /* width 500px centered on the window */
+      .container{
+            width: 500px;
+            display: flex;
+            margin: 0 auto;
+            align-items: center;
+            min-height:100vh;
+        }
+
+        /* All tabs are in this tab-panel*/
+        /* The tabs must sit inside a container */
+        .tab-panel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+        
+        .tab-group{
+            display: flex;
+            flex:1;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .tab{
+            padding:10px;
+            flex: 1;
+            list-style:none;
+            /* border between different Tab areas (the vertical black line
+            that separates different tab areas). */
+            border-right:solid 1px black;
+            text-align:center;
+            cursor:pointer;
+            background-color: lightgray;
+        }
+
+        .tab-D{
+            border:none;
+        }
+
+        .tab.is-active{
+            background:lightpink;
+            border-color:lightpink;
+            transition: all 0.1s ;
+        }
+
+        .panel-group{
+            border-top:none;
+            display: flex;
+            flex-wrap: wrap;
+            height: 100%;
+            width: 100%;
+            background-color:lightpink;
+            padding:20px;
+            justify-content: center;
+        }
+
+        .panel-group  li{
+            list-style:none;
+            padding-left:5px;
+            padding-right:5px;
+
+        }
+
+        /* all other tabs will be invisible. You can
+        make any HTML element invisible by setting its display property to none */
+        .panel{
+            display:none;
+        }
+
+        .panel.is-show{
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Container for my tab-panel -->
+    <div class="container">
+    <!-- Tab-panel in container with 500px width -->
+        <div class="tab-panel">
+            <div class="tab-group">
+                <!-- with Tab1 being active and all other tabs being in-active-->
+                <li class="tab tab-A is-active">Tab1</li> 
+                <li class="tab tab-B">Tab2</li>
+                <li class="tab tab-C">Tab3</li>  
+                <li class="tab tab-D">Tab4</li>  
+             </div>
+             <div class="panel-group">
+                <div class="panel tab-A is-show"></div>
+                <div class="panel tab-B"></div>
+                <div class="panel tab-C"></div>
+                <div class="panel tab-D"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    window.addEventListener("load", (event) => {
+        tab1Txt = 1;tab2Txt = 2;tab3Txt = 3;tab4Txt = 4;
+        index = 0;
+        for(i=0;i<143;i++){
+            var tag1 = document.createElement("li");
+            var tag2 = document.createElement("li");
+            var tag3 = document.createElement("li");
+            var tag4 = document.createElement("li");
+
+            var text1 = document.createTextNode(`${tab1Txt}${tab1Txt}${tab1Txt}`);
+            var text2 = document.createTextNode(`${tab2Txt}${tab2Txt}${tab2Txt}`);
+            var text3 = document.createTextNode(`${tab3Txt}${tab3Txt}${tab3Txt}`);
+            var text4 = document.createTextNode(`${tab4Txt}${tab4Txt}${tab4Txt}`);
+
+            tag1.appendChild(text1);
+            tag2.appendChild(text2);
+            tag3.appendChild(text3);
+            tag4.appendChild(text4);
+
+            document.getElementsByClassName('panel')[index].appendChild(tag1);
+            document.getElementsByClassName('panel')[index+1].appendChild(tag2);
+            document.getElementsByClassName('panel')[index+2].appendChild(tag3);
+            document.getElementsByClassName('panel')[index+3].appendChild(tag4);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+    const tabs = document.querySelectorAll('.tab');
+    for(let i = 0; i < tabs.length; i++) {
+        tabs[i].addEventListener('click', tabSwitch, false);
+    }
+
+    function tabSwitch(){
+        document.getElementsByClassName('is-active')[0].classList.remove('is-active');
+        this.classList.add('is-active');
+        document.getElementsByClassName('is-show')[0].classList.remove('is-show');
+        const arrayTabs = Array.prototype.slice.call(tabs);
+        const index = arrayTabs.indexOf(this);
+        document.getElementsByClassName('panel')[index].classList.add('is-show');   
+    };
+}, false);
+</script>
