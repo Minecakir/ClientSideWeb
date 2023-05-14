@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>YKS</title>
+
+    <style>
+        :root {
+        --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        --background-color:rgb(244,244,244);
+        }
+
+        *{
+            margin:2px;
+            font-family: var(--font-family);
+        }
+
+        body{
+            background-color: var( --background-color);
+        }
+
+        .my-container{
+            display: flex;
+            flex-wrap: wrap;
+            margin: 5px;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 992px) {
+            .my-container{
+                display: grid;
+                grid-template-columns: repeat(1, 2fr);
+            }           
+        }
+
+        .ayt-part, .tyt-part{
+            padding:10px;
+            grid-template-columns: repeat(2, 1fr);
+            /*Two Column for large screens*/
+            flex: 1;
+        }
+
+        .part{
+            background-color: white;
+            border-radius: 7px;
+            border: none;
+        }
+        
+        .header{
+            text-align: center;
+            font-size: 30px;
+        }
+
+        h6{
+            color:rgb(174,174,174);
+        }
+
+        .result-box{
+            box-shadow: none;
+            border:none;
+            text-align: left;
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+        .result-box:focus{
+            outline: none;
+        }
+        
+        input:not(.result-box)[type = "number"]{
+            box-shadow: 2px 2px lightgray;
+            border: 2px 2px;
+            text-align: center;
+            border-radius: 7px; 
+            border-style: solid;
+            border-color: lightgray;
+            height: 40px;
+            font-size: 20px;
+            width:80px;
+       }
+       
+        .lesson-name{
+            justify-content: flex-start;
+            text-align: left;
+            width:35%;
+            padding-left:7px;
+        }
+
+        .box{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .inputs{
+            column-gap:20px;
+        }
+
+        .icons,.inputs{
+            display: flex;
+            justify-content: space-around;
+            align-items: center; 
+            flex:1;
+        }
+
+        .success-scor  input:not(.result-box)[type = "number"]{
+            margin-right: 55px;
+        }
+
+        .icons{
+            padding-right: 50px;
+            column-gap: 40px;
+            padding-left:15px
+        }
+        
+        .lesson-name > h6{
+            color:rgb(41,49,67);
+            font-weight: 700;
+        }
+
+        .header{
+            color:rgb(41,49,67);
+        }
+
+        hr{
+            border: 0;
+            margin:0;
+            border-top: 1px solid rgb(174,174,174);
+        }
+
+        .true-icon{
+            top: 25%;
+            right: 5%;
+            color:green;
+            position:absolute;
+            font-size: 20px;
+        }
+
+        .wrong-icon{
+            bottom : 0%;
+            right: 5%;
+            color:red;
+            position:absolute;
+            font-size: 16px;
+        }
+
+        button{
+            width: 40%;
+            height: 50px;
+            justify-content:space-around;
+            border-radius: 10px;
+            border-color:rgb(235,2,65);
+            font-size: 18px;
+        }
+
+        #btn-hesapla{
+            background-color: rgb(235,2,65);
+            color:white;
+        }
+
+        #btn-temizle{
+            background-color: white;
+            color:rgb(235,2,65);
+        }
+
+        label{
+            color:grey;
+            font-size: large;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>2023 YKS, TYT, AYT Puan Hesaplama</h1>
+    <!-- Container -->
+    <div class="my-container">
+        <!-- AYT Part -->
+        <div class="ayt-part">
+            <!-- AYT Calculator -->
+            <div class="ayt-calculator part">
+                <p class="header"><strong>AYT</strong> Puanı Hesaplama</p>
+                <!-- ICONS -->
+                <div class="icons">
+                    <div class="col-5"></div>
+                    <i class="bi bi-check2 fs-2 col-2"></i>
+                    <i class="bi bi-x-lg fs-3 col-2"></i>
+                    <i class="fs-3 col-1">Net</i>
+                </div>
+                <h6>Türk Dili ve Edebiyati ve Sosyal Bilimler-1 Testi</h6>
+                <!-- BOX1 Turk Dili ve Edebiyati -->
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Turk Dili ve <br>Edebiyati<br><span class="text-primary fw-light"><span class="question">24</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="edb-true" class="col-12 true-num" min="0" max="24" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="edb-wrong" class="col-12 wrong-num" min="0" max="24" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="edb-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+                <!-- BOX2 Tarih -->
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Tarih-1<br><span class="text-primary fw-light"><span class="question">10</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="tarih1-true" class="col-12 true-num" min="0" max="10" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="tarih1-wrong" class="col-12 wrong-num" min="0" max="10" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="tarih1-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+                <!-- BOX3 Cografya-1 -->
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Cografya-1<br><span class="text-primary fw-light"><span class="question">6</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="cog1-true" class="col-12 true-num" min="0" max="6" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="cog1-wrong" class="col-12 wrong-num" min="0" max="6" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="cog1-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr><br>
+                <h6>Sosyal Bilimler-2 Testi</h6>
+                <!-- BOX4 Tarih-2 -->
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Tarih-2<br><span class="text-primary fw-light"><span class="question">11</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="tarih2-true" class="col-12 true-num" min="0" max="11" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="tarih2-wrong" class="col-12 wrong-num" min="0" max="11" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="tarih2-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Cografya-2<br><span class="text-primary fw-light"><span class="question">11</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="cog2-true" class="col-12 true-num" min="0" max="11" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="cog2-wrong" class="col-12 wrong-num" min="0" max="11" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="cog2-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Felsefe Grubu<br><span class="text-primary fw-light"><span class="question">12</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="fls-true" class="col-12 true-num" min="0" max="12" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="fls-wrong" class="col-12 wrong-num" min="0" max="12" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="fls-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Din Kültürü ve<br>Ahlak Bilgisi/Ek<br> Felsefe Grubu<br><span class="text-primary fw-light"><span class="question">12</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="din-true" class="col-12 true-num" min="0" max="12" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="din-wrong" class="col-12 wrong-num" min="0" max="12" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="din-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr><br>
+                <h6>Matematik Testi</h4>
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Matematik<br><span class="text-primary fw-light"><span class="question">40</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="mat-true" class="col-12 true-num" min="0" max="40" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 fs-5 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="mat-wrong" class="col-12 wrong-num" min="0" max="40" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="mat-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr><br>
+                <h6>Fen Bilimleri Testi</h6>
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Fizik<br><span class="text-primary fw-light"><span class="question">14</span> Soru</span></h4>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="fiz-true" class="col-12 true-num" min="0" max="14" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="fiz-wrong" class="col-12 wrong-num" min="0" max="14" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="fiz-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Kimya<br><span class="text-primary fw-light"><span class="question">13</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="kim-true" class="col-12 true-num" min="0" max="13" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="kim-wrong" class="col-12 wrong-num" min="0" max="13" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="kim-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Biyoloji<br><span class="text-primary fw-light"><span class="question">13</span> Soru</span></h4>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="biy-true" class="col-12 true-num" min="0" max="13" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="biy-wrong" class="col-12 wrong-num" min="0" max="13" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="biy-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+            </div>
+        </div>
+        <!-- TYT Part -->
+        <div class="tyt-part">
+            <!-- TYT Calculator Part -->
+            <div class="tyt-calculator part">
+                <p class="header"><strong>TYT</strong> Puanı Hesaplama</p>
+                <!-- ICONS -->
+                <div class="icons">
+                    <div class="col-5"></div>
+                    <i class="bi bi-check2 fs-2 col-2"></i>
+                    <i class="bi bi-x-lg fs-3 col-2"></i>
+                    <i class="fs-3 col-1">Net</i>
+                </div>
+                <!-- BOX1 Turkce -->
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Türkçe<br><span class="text-primary fw-light"><span class="question">40</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="turkce-true" class="col-12 true-num" min="0" max="40" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="turkce-wrong" class="col-12 wrong-num" min="0" max="40" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="turkce-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+                <!-- BOX2 Sosyal Bilimler -->
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Sosyal Bilimler<br><span class="text-primary fw-light"><span class="question">20</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="sb-true" class="col-12 true-num" min="0" max="20" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="sb-wrong" class="col-12 wrong-num" min="0" max="20" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="sb-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+                <!-- BOX3 Temel Matematik -->
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Temel Matematik<br><span class="text-primary fw-light"><span class="question">40</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative">
+                            <input id="tmat-true" class="col-12 true-num" min="0" max="40" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="tmat-wrong" class="col-12 wrong-num" min="0" max="40" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="tmat-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+                <!-- BOX4 Fen Bilimleri -->
+                <div class="box">
+                    <div class="lesson-name">
+                        <h6>Fen Bilimleri<br><span class="text-primary fw-light"><span class="question">20</span> Soru</span></h6>
+                    </div>
+                    <div class="inputs">
+                        <div class="box position-relative ">
+                            <input id="fb-true" class="col-12 true-num" min="0" max="20" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-check2 true-icon"></i>
+                        </div>
+                        <div class="box position-relative">
+                            <input id="fb-wrong" class="col-12 wrong-num" min="0" max="20" onkeyup=imposeMinMax(this) type="number" placeholder="-">
+                            <i class="bi bi-x-lg wrong-icon"></i>
+                        </div>
+                        <div class="col-2">
+                            <input id="fb-n" class="col-12 text-center result-box net" type="number" placeholder="-" readonly>
+                        </div>
+                    </div>
+                </div><hr>
+            </div><br><br>
+
+            <!-- Basari Puani Part -->
+            <div class="success-scor part">
+                <p class="header"><strong>Ortaöğretim</strong> Başarı Puanı</p>
+                <!-- BOX1 Diploma Notu -->
+                <div class="d-flex justify-content-between">
+                    <div class="lesson-name">
+                        <h6>Diploma Notu</h6>
+                    </div>
+                    <div class="box">
+                        <input id="diploma-notu" type = "number" min="0" max="100" onkeyup=imposeMinMax(this) placeholder="50">
+                    </div>
+                </div><hr>
+                <div class="d-flex justify-content-between">
+                    <div class="lesson-name">
+                        <h6>OBP</h6>
+                    </div>
+                    <div class="box">
+                        <input id="obp" type = "number" placeholder="250" readonly>
+                    </div>
+                    
+                </div><hr>
+                <div class="box">
+                    <div class="checkbox">
+                        <input type="checkbox" id="last-year" name="last-year">
+                        <label for="last-year">Geçen sene bir bölüme yerleştim</label>
+                    </div>
+                </div><hr>
+            </div><br>
+            
+            <!-- Results Part -->
+            <!-- input box lar icin Bootstrap kullandim. 
+                Ancak icerik ve yerlestirmeler icin sadece html-css kullanildi -->
+            <div class="results part">
+                <h6 class="header"><strong>SONUÇLAR</strong></h6><br>
+                <!-- Results Box -->
+                <div class="box">
+                    <h2 class="col-3 fs-5">Puan Türü</h2>
+                    <h2 class="col-3 fs-5">Ham Puan</h2>
+                    <h2 class="col-5 fs-5">Yerleştirme Puanı</h2>
+                </div><hr>
+                <!-- TYT Box -->
+                <div class="box TYT">
+                    <h2 class="col-3 fs-5">TYT</h2>
+                    <input id="tyt-ham" class="col-3 result-box result" type="number" placeholder="-" readonly>
+                    <input id="tyt-yer" class="col-5 result-box" type="number" placeholder="-" readonly>
+                </div><hr>
+                <!-- SAY Box -->
+                <div class="box SAY">
+                    <h2 class="col-3 fs-5">SAY</h2>
+                    <input id="say-ham" class="col-3 result-box result" type="number" placeholder="-" readonly>
+                    <input id="say-yer" class="col-5 result-box" type="number" placeholder="-" readonly>
+                </div><hr>
+                <!-- EA Box -->
+                <div class="box EA">
+                    <h2 class="col-3 fs-5">EA</h2>
+                    <input id="ea-ham" class="col-3 result-box result" type="number" placeholder="-" readonly>
+                    <input id="ea-yer" class="col-5 result-box" type="number" placeholder="-" readonly>
+                </div><hr>
+                <!-- SOZ Box -->
+                <div class="box SOZ">
+                    <h2 class="col-3 fs-5">SOZ</h2>
+                    <input id="soz-ham" class="col-3 result-box result" type="number" placeholder="-" readonly>
+                    <input id="soz-yer" class="col-5 result-box" type="number" placeholder="-" readonly>
+                </div>
+            </div><br>
+
+            <!-- Buttons Part -->
+            <div class="box justify-content-around">
+                <button id='btn-hesapla' onclick="Hesapla()">Hesapla</button>
+                <button id='btn-temizle' onclick="Temizle()">Temizle</button>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        
+        //Bu fonksiyonla yanlis ve dogru girilen sayinin toplaminin soru sayisini asmamasini degil
+        // Kullanicinin soru sayisindan fazla bir girisi yanlis ya da dogru input yerine girememesi saglanmistir.
+        function imposeMinMax(el){
+            if(el.value != ""){
+                if(parseInt(el.value) < parseInt(el.min)){
+                    el.value = el.min;
+                }
+                if(parseInt(el.value) > parseInt(el.max)){
+                    el.value = el.max;
+                }
+            }
+            else{el.value = 0;}
+        }
+
+        
+        function Hesapla(){
+
+            let diplomaNotu = parseFloat(document.getElementById('diploma-notu').value);
+            if(isNaN(diplomaNotu))diplomaNotu=0;
+            document.getElementById('obp').value = diplomaNotu*5; /* OBP = 5*DiplomaNotu */
+
+            var wrongNum = document.getElementsByClassName("wrong-num");
+            var trueNum = document.getElementsByClassName("true-num");
+            var questionNum = document.getElementsByClassName("question");
+            var netNum = document.getElementsByClassName("net");
+
+            for(let i=0 ; i<trueNum.length;i++){
+                correctNumber = trueNum[i].value;
+                wrongNumber = wrongNum[i].value;
+
+                if(wrongNumber==''){wrongNumber=0;}
+                if(correctNumber==''){correctNumber=0;}
+
+                sum = parseInt(wrongNumber)+parseInt(correctNumber);
+                if(sum>parseInt(questionNum[i].innerHTML)){
+                    window.alert("Sum of wrong and true number can not be greater than question num.");
+                    TemizleResult();
+                    break;
+                }
+                else{
+                    netNum[i].value = parseInt(correctNumber)-(parseInt(wrongNumber)*0.25);
+                }
+            }
+
+            /* Calculate Tyt Ham*/
+            trNet = parseFloat(document.getElementById("turkce-n").value);
+            sbNet = parseFloat(document.getElementById("sb-n").value);
+            fbNet = parseFloat(document.getElementById("fb-n").value);
+            tmatNet = parseFloat(document.getElementById("tmat-n").value);
+
+            // If Ham score lower than 0 (because of minus net) ham score = 0
+            tyt_ham=5*(trNet+sbNet+fbNet+tmatNet);
+            if(tyt_ham<0)tyt_ham=0;
+            document.getElementById("tyt-ham").value= tyt_ham;
+
+            /* Calculate Tyt Yer*/
+            var multiplyWith = 0.3;
+            if(document.getElementById("last-year").checked){
+                tyt_yer = tyt_ham + diplomaNotu*multiplyWith;
+                document.getElementById("tyt-yer").value= tyt_yer;
+            }else{
+                multiplyWith = 0.6;
+                tyt_yer = tyt_ham + diplomaNotu*multiplyWith;
+                document.getElementById("tyt-yer").value= tyt_yer;}
+
+            // Calculate AYT SAY Ham
+            // AYT SAY Ham Puan = 6.25*(Matematik + Fizik + Kimya + Biyoloji
+            matNet = parseFloat(document.getElementById("mat-n").value);
+            fizNet = parseFloat(document.getElementById("fiz-n").value);
+            kimNet = parseFloat(document.getElementById("kim-n").value);
+            biyNet = parseFloat(document.getElementById("biy-n").value);
+            aytSay_ham = 6.25*(matNet+fizNet+kimNet+biyNet);
+
+            // SAY Ham Puan = 0.6*(AYT SAY Ham Puan) + 0.4*(TYT Ham Puan)
+            say_ham=(aytSay_ham * 0.6)+ (tyt_ham *0.4);
+            if(say_ham<0 || aytSay_ham==0)say_ham=0;
+            document.getElementById("say-ham").value = say_ham;
+
+            // Calculate SAY Yer
+            //To calculate SAY Yerleştirme Puanı, you then add “Diploma notu” as we described above.
+            say_yer = say_ham + diplomaNotu * multiplyWith; 
+            if(say_ham==0)say_yer=0;
+            document.getElementById("say-yer").value = say_yer;
+        
+            //Calculate AYT SOZ Ham
+            /* AYT SÖZ Ham Puan = 6.25*(Türk Dili ve Edebiyatı + Tarih-1 + Coğrafya-1 + 
+            Tarih-2 + Coğrafya-2 + Felsefe Grubu + Din Kültürü ve Ahlak Bilgisi / Ek Felsefe Grubu)*/
+            edbNet = parseFloat(document.getElementById("edb-n").value);
+            tarih1Net = parseFloat(document.getElementById("tarih1-n").value);
+            cog1Net = parseFloat(document.getElementById("cog1-n").value);
+            tarih2Net = parseFloat(document.getElementById("tarih2-n").value);
+            cog2Net = parseFloat(document.getElementById("cog2-n").value);
+            felsefeNet = parseFloat(document.getElementById("fls-n").value);
+            dinNet = parseFloat(document.getElementById("din-n").value);
+            aytSoz_ham = 6.25*(edbNet+tarih1Net+cog1Net+tarih2Net+cog2Net+felsefeNet+dinNet);
+
+            //Calculate SOZ HAM
+            //SÖZ Ham Puan is calculated by taking 40% of your TYT score and 60% of your AYT SÖZ score.
+            soz_ham=aytSoz_ham * 0.6+ tyt_ham *0.4;
+            if(soz_ham<0 || aytSoz_ham==0 )soz_ham=0;
+            document.getElementById("soz-ham").value= soz_ham;
+
+            // Calculate SOZ Yer
+            //To calculate SOZ Yerleştirme Puanı, you then add “Diploma notu” as we described above.
+            soz_yer = soz_ham + diplomaNotu*multiplyWith;
+            if(soz_ham==0)soz_yer=0;
+            document.getElementById("soz-yer").value = soz_yer;
+
+            //Calculate EA Ham
+            //AYT EA Ham Puan = (AYT SÖZ Ham Puan + 12.5*(AYT Matematik Net))*0.5
+            ea_ham = (aytSoz_ham + 12.5*(matNet))*0.5;
+            if(ea_ham<0)ea_ham=0;
+            document.getElementById("ea-ham").value = ea_ham;
+
+            //Calculate EA Yer
+            ea_yer = ea_ham + diplomaNotu*multiplyWith;
+            if(ea_ham==0)ea_yer=0;
+            document.getElementById("ea-yer").value = ea_yer;
+      
+
+        }
+        function Temizle(){
+            const allInput = document.querySelectorAll("input[type=number]");
+            allInput.forEach(element=>{
+                element.value="";
+            });
+        }
+        function TemizleResult(){
+            const results = document.querySelectorAll(".result");
+            results.forEach(element=>{
+                element.value="";
+            });
+        }        
+    </script>
+</body>
+</html>
