@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+</head>
+<style>
+
+    .container{
+        margin:0 auto;
+        /*container that occupies 75% of the entire screen*/
+        width:75%;
+        justify-content: center;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      padding: 20px;
+      justify-content: center;
+    }
+    
+    .grid-container > div {
+        /*border: 1px solid black;*/
+    }
+
+    /*each line as a box and put a thick left border with the
+specified color to the box*/
+
+    .grid-container > .box__image{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .grid-container > .box__text{
+        background-color: rgb(244, 244, 244);
+        margin-right:50px;
+    }
+    
+    .grid-container img{
+        max-width:500px;
+        min-width: 100px;
+        width:100%;
+    }
+    
+    .box__text p{
+        overflow: hidden;
+        font-size: 16px;
+        padding: 8px;
+        margin: 0.2em;
+    }
+
+    .blue__text{
+        border-left: 0.3em solid blue;
+    }
+
+    .green__text{
+        border-left: 0.3em solid green;
+    }
+
+    #kdv__text{
+        font-size: 28px;
+        font-weight: bold;
+        border-left: 0.2em solid green;
+        margin: 0.1em;
+        color:rgb(61,190,255);
+    }
+
+    #arduino__text{
+        color:rgb(61,190,255);
+        font-weight: bold;
+    }
+
+    .box__text h3{
+        text-align: center;
+    }
+
+    .feature-list, .feature-table{
+        padding:0px 80px;
+    }
+
+    .feature-list li{
+        padding-left: 15px;
+    }
+
+    .headline{
+        color:rgb(0, 85, 185);
+        margin-bottom: 0em;
+    }
+
+    hr {
+        border-style: solid;
+        color: black;
+        border-width: 0.1px;
+        margin-top: 0.2em;
+        margin-bottom: 0.7em;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    table th{
+        background-color: rgb(244, 244, 244);
+    }
+        
+    table, td, th {
+        border: 2px solid rgb(235,235,235);
+        text-align: left;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    /*table rows have a “hover” effect*/
+    table tr:not(#first-tr):hover{
+        background-color: rgb(144,144,144);
+        color:white;
+    }
+
+    /*add the hover effect to the “Sepete Ekle” button. Specifically, the
+    background color of this button must turn blue when the mouse is over it.
+    Submission*/
+    .box__text button:not(#add__cart){
+        padding:8px;
+        width:40px;
+        border-color: blue;
+        border-width: 1px;
+    }
+
+    #add__cart{
+        padding:8px;
+        background-color: green;
+        color:white;
+        border-color: green;
+        margin-left: 10px;
+    }
+
+    #add__cart:hover{
+        background-color: blue;
+        border-color: blue;
+    }
+
+    #add__list{
+        color: green;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid-container">
+            <div class="box__image"><img src="./arduino.jpg" alt="Arduino"></div>
+            <div class="box__text">
+                <h3>Orijinal Arduino Uno Mini - Limited Edition</h3>
+                <p class="blue__text">Marka/Menşei: <span id="arduino__text">Arduino</span></p>
+                <p class="green__text">Stok Kodu: 20530</p>
+                <p class="blue__text">765,66 TL + KDV</p>
+                <p class="green__text" id="kdv__text">903,48 TL KDV Dahil</p>
+                <p class="blue__text"><button>-</button><button>1</button><button>+</button>
+                    <button id="add__cart">Sepete Ekle</button></p>
+                <p class="green__text"><span id="add__list">* Alışveriş Listeme Ekle</span></p>
+
+
+            </div>
+        </div>
+        <div class="feature-list">
+            <h3 class="headline">Orijinal Arduino Uno Mini Özellikleri</h3><hr>
+            <li>6 adet PWM çıkışı sağlayan 14 dijital I/O pini</li>
+            <li>6 analog giriş pini</li>
+            <li>16MHz seramik rezonatör</li>
+            <li>USB-C bağlantı noktası</li>
+            <li>USB veya harici bir güç kaynağı ile çalışır</li>
+            <li>Yeniden başlatma tuşu</li>
+            <li>Anahtar bileşenler</li>
+            <li>Mikroçip Teknolojisi ATmega328 MCU</li>
+            <li>USB Denetleyicili Mikroçip Teknolojisi ATmega16U2 MCU</li>
+        </div>
+        <div class="feature-table">
+            <h3 class="headline">Teknik Özellikleri</h3><hr>
+            <table>
+                <tr id="first-tr">
+                    <th>Üretici Firma</th>
+                    <th>Arduino</th>
+                </tr>
+                <tr>
+                    <td>SRAM</td>
+                    <td>2KB</td>
+                </tr>
+                <tr>
+                    <td>Ürün Boyutları</td>
+                    <td>10.9 x 9.09 x 5 cm</td>
+                </tr>
+                <tr>
+                    <td>Ürün Ağırlığı</td>
+                    <td>73.6 kg</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
